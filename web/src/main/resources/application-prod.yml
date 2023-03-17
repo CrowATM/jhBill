@@ -8,7 +8,7 @@ spring:
       aop-patterns:
         - cn.jxb.*.controller.*Controller
       driver-class-name: oracle.jdbc.OracleDriver
-      url: jdbc:oracle:thin:@100.100.100.100:1521:orcl
+      url: jdbc:oracle:thin:@:orcl
       username: insurance
       password: insurancedba
       #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙

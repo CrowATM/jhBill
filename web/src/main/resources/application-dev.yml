@@ -3,7 +3,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: oracle.jdbc.OracleDriver
-      url: jdbc:oracle:thin:@100.100.100.159:1521:orcl
+      url: jdbc:oracle:thin:@:orcl
       username: insurance
       password: insurancedba
       filters: encoding
