@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jhBill</artifactId>
+        <groupId>cn.bx</groupId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <description>web入口</description>
+    <artifactId>web</artifactId>
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.bx</groupId>
+            <artifactId>core</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.bx</groupId>
+            <artifactId>dao</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <!--   指定配置文件的位置  -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <!--   读取resources下的所有文件，include表示指定文件内的，相对的还有excludes ，排除其下的文件 -->
+                    <include>**/*</include>
+                </includes>
+               <!-- <excludes>
+                    <exclude>**/*.dll</exclude>
+                </excludes>-->
+                <!-- 开启替换标签，比如'@env@'就是通过这个替换的 -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

@@ -1,0 +1,21 @@
+url:
+  login: /login
+  logout: /logout
+#  重复读取request流
+  allow-repeat-urls:
+    - /login
+token:
+#  token headerName
+  header-name: Authorization
+  #token 过期时间
+  expire-time: 23 * 60 * 60 * 1000
+
+#  放行路径
+security-permit-all:
+  - /swagger-ui.html
+  - /swagger-resources/**
+  - /webjars/**
+  - /v2/**
+  - /api/**
+  - /druid/**
+

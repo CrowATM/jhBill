@@ -1,0 +1,26 @@
+server:
+  port: 8089
+  servlet:
+    encoding:
+      force: true
+      enabled: true
+      charset: utf-8
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  profiles:
+    active: '@env@'
+  # Spring MVC boot-2.6后 处理映射匹配的默认策略已从AntPathMatcher更改为PathPatternParser。
+  # 设置spring.mvc.pathmatch.matching-strategy为ant-path-matcher来改变
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cache:
+#    ehcache3
+    type: jcache
+    jcache:
+      config: classpath:jcache.xml
+
+mybatis:
+  mapper-locations: classpath*:mapper/*/*.xml

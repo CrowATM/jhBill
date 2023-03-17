@@ -1,0 +1,9 @@
+app-doc:
+  version: '@project.version@'
+  description: 项目简介
+
+contact:
+  name: zk
+  url:
+  email: 694418739@qq.com
+  mobile: 15901774451

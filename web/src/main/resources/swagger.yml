@@ -1,0 +1,9 @@
+app-doc:
+  version: '@project.version@'
+  description: 项目简介1
+
+contact:
+  name: zk1
+  url:
+  email: 213123123@qq.com
+  mobile: 123
