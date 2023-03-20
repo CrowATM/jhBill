@@ -1,6 +1,5 @@
 package cn.bx.core.config.security.support;
 
-import cn.bx.core.config.swagger.support.CustomizeUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

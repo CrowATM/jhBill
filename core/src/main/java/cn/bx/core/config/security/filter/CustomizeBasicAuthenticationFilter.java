@@ -16,15 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/** token认证过滤器
+/** token的认证过滤器
  * @Author zk
- * @CreateDateTime 2022/5/16 14:50
+ * @Date 2022/5/16 14:50
  */
 public class CustomizeBasicAuthenticationFilter extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
 
-    @Autowired
     public CustomizeBasicAuthenticationFilter(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }

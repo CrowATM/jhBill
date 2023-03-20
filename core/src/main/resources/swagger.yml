@@ -7,3 +7,8 @@ contact:
   url:
   email: 694418739@qq.com
   mobile: 15901774451
+
+env:
+  profiles:
+    - dev
+    - test

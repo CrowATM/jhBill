@@ -9,11 +9,13 @@ import cn.bx.core.config.security.manager.CustomizeFilterInvocationSecurityMetad
 import cn.bx.core.config.security.model.SecurityModel;
 import cn.bx.core.config.security.provider.CustomizeAuthenticationProvider;
 import cn.bx.core.config.security.support.UserDetailsServiceImpl;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,6 +31,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.Date;
 
@@ -93,10 +96,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /*
+    /**
      * 自定义用户名密码鉴定，支持json格式传入的用户名密码
-     * {@link WebSecurityConfig#configure(HttpSecurity)} 配置方法里用到这个bean
-     * @throws Exception
+     * {@link SecurityConfig#configure(HttpSecurity)} 配置方法里用到这个bean
      */
     @Bean
     public CustomizeUsernamePasswordAuthenticationFilter customizeUsernamePasswordAuthenticationFilter() throws Exception {
@@ -131,9 +133,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new Date().getTime() + "";
     }
 
+    @Resource
+    private Environment environment;
+
     @Override
     public void configure(WebSecurity web) {
         //不走 Spring Security 过滤器链
+        String[] activeProfiles = environment.getActiveProfiles();
+        if (ArrayUtils.contains(activeProfiles, "dev")){
+            web.ignoring().antMatchers("/**");
+        }
         web.ignoring().antMatchers(securityModel.getSecurityPermitAll());
     }
 

@@ -6,11 +6,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
-/**
+/** 登陆鉴权,login请求验证用户
  * @Author zk
- * @CreateDateTime 2022/5/17 11:01
+ * @Date 2022/5/17 11:01
  */
 public class CustomizeAuthenticationProvider implements AuthenticationProvider {
 

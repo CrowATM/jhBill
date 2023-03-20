@@ -3,19 +3,17 @@ package cn.bx.core.util;
 import cn.bx.core.config.ehcache.support.JwtTokenService;
 import cn.bx.core.config.security.model.SecurityModel;
 import cn.bx.core.config.security.model.UserLoginToken;
-import cn.bx.core.config.swagger.support.UserLoginInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.CacheManager;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Description toke验证
@@ -55,10 +53,32 @@ public class TokenVerifyUtil {
             if (!JwtUtil.verify(tokenHeader, username, password)) {
                 return null;
             }
+//            userDetails = new CustomizeUserDetail("admin", "123456", new ArrayList<>());
         } catch (Exception e) {
             log.warn("从请求头部获取" + securityModel.getToken().getHeaderName() + "并验证其中的token失败", e);
             return null;
         }
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+    }
+
+
+    //form => application/x-www-form-urlencoded
+    //注意大小写
+
+    /**
+     * 验证请求是post且是json
+     * @param request request
+     * @return boolean
+     */
+    @SuppressWarnings("deprecation")
+    public static boolean verifyHeaderPostAndJson(HttpServletRequest request) {
+        //判断请求方法是否是post
+        if (!StringUtils.equalsIgnoreCase("POST", request.getMethod())) {
+            throw new AuthenticationServiceException("不支持当前请求方式: " + request.getMethod());
+        } else {
+            //判断请求头的content是否是json格式
+            String contentType = request.getContentType().toLowerCase();
+            return StringUtils.equalsAnyIgnoreCase(contentType, MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_JSON_VALUE);
+        }
     }
 }

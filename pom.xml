@@ -15,7 +15,7 @@
     </modules>
     <name>jhBill</name>
     <packaging>pom</packaging>
-    <description>交行对账文件推送T+1</description>
+    <description>spring-security 默认模板工程</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -170,5 +170,4 @@
             </properties>
         </profile>
     </profiles>
-
 </project>

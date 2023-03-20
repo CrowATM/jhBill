@@ -1,5 +1,6 @@
 package cn.bx.core.config.security.filter;
 
+import cn.bx.core.util.TokenVerifyUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +28,7 @@ public class CustomizeUsernamePasswordAuthenticationFilter extends UsernamePassw
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        if (verifyHeader(request)) {
+        if (TokenVerifyUtil.verifyHeaderPostAndJson(request)) {
             Map<String, String> map;
             UsernamePasswordAuthenticationToken authRequest = null;
             try {
@@ -49,17 +50,5 @@ public class CustomizeUsernamePasswordAuthenticationFilter extends UsernamePassw
         return super.attemptAuthentication(request, response);
     }
 
-    //form => application/x-www-form-urlencoded
-    //注意大小写
-    @SuppressWarnings("deprecation")
-    private boolean verifyHeader(HttpServletRequest request) {
-        //判断请求方法是否是post
-        if (StringUtils.equalsIgnoreCase("POST", request.getMethod())) {
-            throw new AuthenticationServiceException("不支持当前请求方式: " + request.getMethod());
-        } else {
-            //判断请求头的content是否是json格式
-            String contentType = request.getContentType().toLowerCase();
-            return StringUtils.equalsAnyIgnoreCase(contentType, MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_JSON_VALUE);
-        }
-    }
+
 }
