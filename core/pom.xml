@@ -64,6 +64,11 @@
             <artifactId>ehcache</artifactId>
             <version>${org.ehcache.version}</version>
         </dependency>
+        <!-- 缺少时 org.springframework.cache.CacheManager无法自动注入-->
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

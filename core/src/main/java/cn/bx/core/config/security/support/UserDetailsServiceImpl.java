@@ -2,6 +2,7 @@ package cn.bx.core.config.security.support;
 
 import cn.bx.dao.mapper.UserMapper;
 import cn.bx.dao.model.entry.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserMapper userMapper;
 
+    @Autowired
     public UserDetailsServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }

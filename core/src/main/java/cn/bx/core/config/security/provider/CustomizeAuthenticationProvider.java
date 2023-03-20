@@ -1,12 +1,12 @@
 package cn.bx.core.config.security.provider;
 
 import cn.bx.core.config.security.support.CustomizeUserDetail;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author zk

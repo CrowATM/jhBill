@@ -10,8 +10,10 @@ import cn.bx.core.config.security.model.SecurityModel;
 import cn.bx.core.config.security.provider.CustomizeAuthenticationProvider;
 import cn.bx.core.config.security.support.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,7 +29,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.Date;
 
@@ -38,6 +39,8 @@ import java.util.Date;
  */
 @EnableWebSecurity
 @Configuration
+@EnableCaching
+@Order(-1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //登录成功处理逻辑

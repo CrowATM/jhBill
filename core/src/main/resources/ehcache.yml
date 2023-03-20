@@ -1,6 +1,0 @@
-#cache:
-#  ehcache:
-#    heap: 1000
-#    off-heap: 100
-#    disk: 500
-#    disk-dir: /cache/ehcache

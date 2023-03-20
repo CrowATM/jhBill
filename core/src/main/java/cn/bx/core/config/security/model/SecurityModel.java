@@ -1,6 +1,9 @@
 package cn.bx.core.config.security.model;
 
 import cn.bx.common.YmlSourceFactory;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,7 @@ import java.util.List;
  */
 @Component
 @PropertySource(value = "classpath:security.yml", factory = YmlSourceFactory.class)
+@ConfigurationProperties(prefix = "security-model")
 public class SecurityModel {
 
     private SecurityUrl url;

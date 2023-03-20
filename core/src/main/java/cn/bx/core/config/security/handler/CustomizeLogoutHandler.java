@@ -3,6 +3,7 @@ package cn.bx.core.config.security.handler;
 import cn.bx.core.config.ehcache.support.JwtTokenService;
 import cn.bx.core.config.security.model.SecurityModel;
 import cn.bx.core.util.SpringBeanUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ public class CustomizeLogoutHandler implements LogoutHandler {
     private final JwtTokenService jwtTokenService;
     private final SecurityModel securityModel;
 
+    @Autowired
     public CustomizeLogoutHandler(JwtTokenService jwtTokenService, SecurityModel securityModel) {
         this.jwtTokenService = jwtTokenService;
         this.securityModel = securityModel;

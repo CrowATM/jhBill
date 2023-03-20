@@ -1,6 +1,6 @@
 package cn.bx.core.config.swagger.support;
 
-import cn.bx.core.common.YmlSourceFactory;
+import cn.bx.common.YmlSourceFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;

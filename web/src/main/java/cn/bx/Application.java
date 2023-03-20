@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 
 /**
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.AnnotationBeanNameGenerator;
  * @Date 2023/3/16 11:49
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class}, scanBasePackages = "cn.bx")
-@MapperScan(basePackages = {"cn.jb.*.mapper"}, nameGenerator = Application.SpringBeanNameGenerator.class)
+@MapperScan(basePackages = {"cn.bx.*.mapper"}, nameGenerator = Application.SpringBeanNameGenerator.class)
 public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

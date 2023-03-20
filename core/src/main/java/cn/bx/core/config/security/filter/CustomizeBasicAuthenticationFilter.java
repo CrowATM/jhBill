@@ -4,6 +4,7 @@ import cn.bx.core.config.security.support.ResultCode;
 import cn.bx.core.response.ResponseData;
 import cn.bx.core.response.ResponseDataUtil;
 import cn.bx.core.util.TokenVerifyUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +24,7 @@ public class CustomizeBasicAuthenticationFilter extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
 
+    @Autowired
     public CustomizeBasicAuthenticationFilter(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
