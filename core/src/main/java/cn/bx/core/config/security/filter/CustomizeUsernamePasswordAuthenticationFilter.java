@@ -42,7 +42,6 @@ public class CustomizeUsernamePasswordAuthenticationFilter extends UsernamePassw
             } catch (IOException e) {
                 authRequest = new UsernamePasswordAuthenticationToken("", "");
             } finally {
-                //发送给UserDetailsService信息
                 setDetails(request, authRequest);
             }
             return this.getAuthenticationManager().authenticate(authRequest);
