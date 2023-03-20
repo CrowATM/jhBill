@@ -23,6 +23,9 @@ public class LogAppendDefaultInfoAspect {
     public void controllerPointcut() {
     }
 
+    /**
+     * spring.xml [%X{userName}] [%X{ipAddress}]
+     */
     @Before(value = "controllerPointcut()")
     public void getLogDefaultInfo(JoinPoint point) {
         String userName = "NaN";
