@@ -24,7 +24,7 @@ public class LogAppendDefaultInfoAspect {
     }
 
     /**
-     * spring.xml [%X{userName}] [%X{ipAddress}]
+     * logback-spring.xml [%X{userName}] [%X{ipAddress}]
      */
     @Before(value = "controllerPointcut()")
     public void getLogDefaultInfo(JoinPoint point) {
