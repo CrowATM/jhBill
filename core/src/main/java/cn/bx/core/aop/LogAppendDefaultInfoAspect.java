@@ -8,7 +8,7 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description 控制器日志追加默认信息
+ * @Description 控制器日志追加默认信息 or in Filter
  * @Author ZK
  * @Date 2023/3/20 17:20
  */
